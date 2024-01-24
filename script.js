@@ -107,7 +107,7 @@ function game(selection) {
     if (finalresult === "win") {
         user++;
     }
-    else {
+    else if (finalresult == "lose") {
         computer++;
     }
     if (user > computer) {
