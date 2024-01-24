@@ -4,9 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="header">
+        <p class="headtitle">Rock Paper Scissors!<p>
+    </div>
+    <div class="scores">
+        <p class="player">Your Score: <span id="playerscore">0</span></p>
+        <p class="computer">Computer Score: <span id="computerscore">0</span></p>
+    </div>
+    <div class="description">
+        <p>Make your selection</p>
+    </div>
+    <div class="selections">
+        <img src="rock.png" alt="rock">
+        <img src="scissors.png" alt="scissors">
+        <img src="paper.png" alt="paper">
+    </div>
+    <div class="resultdiv">
+        <p class="result"></p>
+    </div>
+    <div class="resetdiv">
+        <p class="reset" style="font-size: 60px">Reset</p>
+    </div>
+    <div class="overlay">
+        <div class="obox">
+            <p class="finalresult">Nothing</p>
+            <p class="oreset">Play Again!</p>
+        </div>
+    </div>
     
 </body>
+<map name="image-map">
+    <area target="" alt="" title="" id="rock" coords="16,78,241,492" shape="rect">
+    <area target="" alt="" title="" id="scissors" coords="243,78,481,492" shape="rect">
+    <area target="" alt="" title="" id="paper" coords="483,79,708,492" shape="rect">
+</map>
 </html>

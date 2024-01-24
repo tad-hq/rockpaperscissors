@@ -1,23 +1,46 @@
-
-var input;
-function check() {
-    input = prompt("Rock, Paper, Scissors?").toLowerCase();
-    if (input === "rock" || input === "paper" || input === "scissors") {
-        console.log("valid input thank you");
+var message;
+document.addEventListener ("click", function(e) {
+    var targets = ["rock","paper","scissors"];
+    var result = document.querySelector(".result");
+    var pc = document.querySelector("#computerscore");
+    var player = document.querySelector("#playerscore");
+    if (targets.includes(e.target.alt)) {
+        game(e.target.alt);
+        pc.textContent = computer;
+        player.textContent = user;
+        result.textContent = message;
+        var final = document.querySelector(".finalresult");
+        if (computer == 5) {
+            final.textContent = "You lose";
+            document.querySelector(".overlay").style.display = "block";
+        }
+        else if (user == 5) {
+            final.textContent = "You win!";
+            document.querySelector(".overlay").style.display = "block";
+        }
+        else {
+    
+        }
     }
-    else {
-        alert("Your input was invalid")
-        input = prompt("Rock, Paper, Scissors?").toLowerCase();
-        check();
+    else if (e.target.className == "reset") {
+        computer = 0;
+        user = 0;
+        pc.textContent = computer;
+        player.textContent = user;
     }
-}
-check();
+    else if (e.target.className == "oreset") {
+        computer = 0;
+        user = 0;
+        pc.textContent = computer;
+        player.textContent = user;
+        document.querySelector(".overlay").style.display = "none";
+    }
+})
 var answer;
 
 
 function getComputerChoice() {
     var choice = Math.floor(Math.random() * (3 - 1 + 1) + 1)
-    alert(choice);
     if (choice == 1) {
         answer = "rock";
     }
@@ -30,69 +53,62 @@ function getComputerChoice() {
     return answer;
 }
 var result;
-function round() {
+function round(input) {
     var computer = getComputerChoice();
-    alert(computer)
     if (computer === "rock" && input === "scissors") {
         result = "lose";
-        console.log("You lose! Rock beats scissors")
+        message = "You lose! Rock beats scissors";
     }
     else if (computer === "rock" && input === "paper") {
         result = "win";
-        console.log("You lose! Rock beats paper")
+        message = "You lose! Rock beats paper";
     }
     else if (computer === "rock" && input === "rock") {
         result = "tie";
     }
     else if (computer === "paper" && input === "scissors") {
         result = "win";
-        console.log("You win! Scissors beats paper")
+        message = "You win! Scissors beats paper";
     }
     else if (computer === "paper" && input === "paper") {
         result = "tie";
     }
     else if (computer === "paper" && input === "rock") {
         result = "lose";
-        console.log("You lose! Paper beats rock")
+        message = "You lose! Paper beats rock";
     }
     else if (computer === "scissors" && input === "rock") {
         result = "win";
-        console.log("You win! Rock beats scissors")
+        message = "You win! Rock beats scissors";
     }
     else if (computer === "scissors" && input === "paper") {
         result = "lose";
-        console.log("You lose! Scissors beats paper")
+        message = "You lose! Scissors beats paper";
     }
     else if (computer === "scissors" && input === "scissors") {
         result = "tie";
     }
     else {
-        console.log("Something went wrong");
+        message = "Something went wrong";
     }
     if (result === "tie") {
-        console.log("Tie replay, enter new entry.")
-        check();
-        round();
+        message = "Tie replay, enter new entry.";
     }
     else {
         return result;
     }
 }
-
-function game() {
-    var computer = 0;
-    var user = 0;
+var computer = 0;
+var user = 0;
+function game(selection) {
     var win = "You win!";
     var lose = "You lose";
-    for (let i = 0; i <= 5; i++) {
-        check();
-        var finalresult = round();
-        if (finalresult === "win") {
-            user++;
-        }
-        else {
-            computer++;
-        }
+    var finalresult = round(selection);
+    if (finalresult === "win") {
+        user++;
+    }
+    else {
+        computer++;
     }
     if (user > computer) {
         return win;
@@ -101,5 +117,3 @@ function game() {
         return lose;
     }
 }
-
-console.log(game());
